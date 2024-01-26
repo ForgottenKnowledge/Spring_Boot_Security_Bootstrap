@@ -1,4 +1,4 @@
-package ru.kata.spring.boot_security.demo.model;
+package ru.spring.boot_security.demo.model;
 
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
@@ -38,6 +38,16 @@ public class User implements UserDetails {
     @ManyToMany(fetch = FetchType.LAZY)
     private Set<Role> roles;
 
+    public User() {
+    }
+
+    public User(String name, String surname, Integer age, Long phone, String password) {
+        this.name = name;
+        this.surname = surname;
+        this.age = age;
+        this.phone = phone;
+        this.password = password;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
