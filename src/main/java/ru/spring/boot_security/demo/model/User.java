@@ -1,6 +1,9 @@
 package ru.spring.boot_security.demo.model;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -10,6 +13,9 @@ import java.util.Collection;
 import java.util.Set;
 
 @Data
+@NoArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name = "users")
 public class User implements UserDetails {
@@ -37,9 +43,6 @@ public class User implements UserDetails {
 
     @ManyToMany(fetch = FetchType.LAZY)
     private Set<Role> roles;
-
-    public User() {
-    }
 
     public User(String name, String surname, Integer age, Long phone, String password) {
         this.name = name;
@@ -80,3 +83,5 @@ public class User implements UserDetails {
     }
 
 }
+
+
