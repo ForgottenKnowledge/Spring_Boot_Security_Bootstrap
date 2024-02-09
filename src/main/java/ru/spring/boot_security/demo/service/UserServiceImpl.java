@@ -18,7 +18,6 @@ public class UserServiceImpl implements UserService {
 
 
     public UserServiceImpl(BCryptPasswordEncoder bCryptPasswordEncoder, UserDao userDao) {
-
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
         this.userDao = userDao;
     }
@@ -40,6 +39,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public User getUserById(long id) {
         return userDao.getUser(id);
     }
@@ -64,6 +64,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public User getUserByName(String name) {
         return userDao.getUserByName(name);
     }
