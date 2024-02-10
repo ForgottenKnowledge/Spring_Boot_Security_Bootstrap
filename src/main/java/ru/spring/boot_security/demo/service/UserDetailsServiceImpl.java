@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.spring.boot_security.demo.dao.UserDao;
 
 @Service("userDetailsServiceImpl")
-@Transactional
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     private final UserDao userDao;
@@ -18,6 +17,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     }
 
     @Override
+    @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         UserDetails user = userDao.getUserByName(username);
         if (user == null) {
